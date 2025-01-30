@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Management</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="upper">
+          <h2>Add Product</h2>
+          <form id="productForm">
+            <!-- product name  -->
+            <label for="productName">Name: </label>
+            <input type="text" name="productName" id="productName" />
+
+            <!-- product image  -->
+            <label for="productImage">Image: </label>
+            <input
+              type="file"
+              name="productImage"
+              id="productImage"
+              accept="image/jpeg, image/png"
+            />
+
+            <!-- product price  -->
+            <label for="productPrice">Price: </label>
+            <input type="text" name="productPrice" id="productPrice" />
+
+            <!-- product description  -->
+            <label for="productDescription">Description: </label>
+            <input
+              type="text"
+              name="productDescription"
+              id="productDescription"
+            />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+        <div class="lower">
+          <h1>Products List</h1>
+          <div class="list"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="clear-all">Clear All</button>
+
+    <script type="module" src="js/Product.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
