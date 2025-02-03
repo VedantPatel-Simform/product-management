@@ -4,8 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit</title>
+    <link rel="stylesheet" href="edit.css" />
   </head>
   <body>
-    <h1>This is edit</h1>
+    <h1>Edit form</h1>
+    <form id="productForm">
+      <!-- product name  -->
+      <label for="productName">Name: </label>
+      <input type="text" name="productName" id="productName" />
+
+      <!-- product image  -->
+      <label for="productImage">Image: </label>
+      <input
+        type="file"
+        name="productImage"
+        id="productImage"
+        accept="image/jpeg, image/png"
+      />
+      <img src="" alt="" id="previewImage" />
+
+      <!-- product price  -->
+      <label for="productPrice">Price: </label>
+      <input type="text" name="productPrice" id="productPrice" />
+
+      <!-- product description  -->
+      <label for="productDescription">Description: </label>
+      <input type="text" name="productDescription" id="productDescription" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script type="module" src="js/edit.js"></script>
   </body>
 </html>

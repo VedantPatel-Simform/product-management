@@ -32,7 +32,6 @@ const Product = {
       }
       return product;
     });
-    this.displayProduct();
     localStorage.setItem("productList", JSON.stringify(this.products));
   },
 
@@ -44,6 +43,10 @@ const Product = {
     this.products = [];
     localStorage.clear("productList");
     this.displayProduct();
+  },
+
+  getProduct: function (id) {
+    return this.products.find((prod) => prod.id == id);
   },
 
   displayProduct: function () {
