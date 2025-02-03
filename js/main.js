@@ -2,7 +2,7 @@ import Product from "./Product.js";
 import { imageToBase64, generateUniqueId } from "./utility.js";
 Product.init(document);
 Product.displayProduct();
-
+console.log(Product.getAllProducts());
 const form = document.getElementById("productForm");
 
 form.onsubmit = async (event) => {

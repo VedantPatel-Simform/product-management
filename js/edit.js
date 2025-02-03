@@ -21,11 +21,15 @@ productPrice.value = editProd.price;
 productDescription.value = editProd.desc;
 previewImage.src = editProd.image;
 
-// to preview image when image is changed
+let base64url;
 productImage.addEventListener("change", async (event) => {
   const formData = new FormData(productForm);
   const image = formData.get("productImage");
-  const base64url = image ? await imageToBase64(image) : editProd.image;
+  if (image.name) {
+    base64url = await imageToBase64(image);
+  } else {
+    base64url = editProd.image;
+  }
   previewImage.src = base64url;
 });
 
@@ -36,8 +40,11 @@ productForm.onsubmit = async (event) => {
   const price = formData.get("productPrice");
   const desc = formData.get("productDescription");
   const image = formData.get("productImage");
-
-  const base64url = image ? await imageToBase64(image) : editProd.image;
+  if (image.name) {
+    base64url = await imageToBase64(image);
+  } else {
+    base64url = editProd.image;
+  }
 
   Product.editProduct(id, "name", name);
   Product.editProduct(id, "price", price);
