@@ -1,9 +1,9 @@
 import Product from "./Product.js";
 import { imageToBase64, generateUniqueId } from "./utility.js";
+Product.init(document);
+Product.displayProduct();
 
 const form = document.getElementById("productForm");
-
-Product.init(document);
 
 form.onsubmit = async (event) => {
   event.preventDefault();
@@ -24,13 +24,11 @@ form.onsubmit = async (event) => {
     price: productPrice,
   });
 
-  console.log(Product.getAllProducts());
   form.reset();
 };
 
 const clearProducts = document.getElementById("clear-all");
 
 clearProducts.onclick = () => {
-  console.log(Product.products[0].image);
   Product.clearProducts();
 };

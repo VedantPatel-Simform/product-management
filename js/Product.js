@@ -5,10 +5,12 @@ const Product = {
 
   init: function (document) {
     this.document = document;
-    console.log(document);
     const savedProducts = localStorage.getItem("productList");
     this.products = savedProducts ? JSON.parse(savedProducts) : [];
-    this.displayProduct();
+  },
+
+  getUpdatedDocument: function () {
+    return this.document;
   },
 
   addProduct: function (product) {
@@ -46,7 +48,6 @@ const Product = {
 
   displayProduct: function () {
     let innerText = "";
-
     for (let i = 0; i < this.products.length; i++) {
       let product = this.products[i];
       innerText += `<div class="item">
@@ -57,10 +58,25 @@ const Product = {
                   <div class="name">${product.name}</div>
                   <div class="price">${product.price}</div>
                 </div>
+                <div>
+                  <button class="delete-btn" data-id="${product.id}">Delete</button>
+                  <button class="edit-btn">
+                  <a href="edit.html?id=${product.id}">Edit</a>
+                  </button>
+                </div>
               </div>`;
     }
     const lower = document.getElementsByClassName("list")[0];
     lower.innerHTML = innerText;
+
+    //add delete button feature
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach((btn, i) => {
+      const id = btn.getAttribute("data-id");
+      btn.addEventListener("click", (e) => {
+        this.removeProduct(id);
+      });
+    });
   },
 };
 
