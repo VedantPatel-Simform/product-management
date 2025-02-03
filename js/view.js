@@ -13,12 +13,15 @@ const productDescription = document.getElementById("description");
 const editBtn = document.getElementById("edit");
 const deleteBtn = document.getElementById("delete");
 
+const productId = document.getElementById("productId");
+
 const Prod = Product.getProduct(id);
 
 productName.textContent = Prod.name;
 productImage.src = Prod.image;
 productPrice.innerHTML = "<span>&#8377</span>  " + Prod.price;
 productDescription.textContent = Prod.desc;
+productId.textContent = "#" + Prod.id;
 editBtn.href = `edit.html?id=${id}`;
 
 deleteBtn.onclick = () => {
