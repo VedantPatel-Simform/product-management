@@ -55,18 +55,19 @@ const Product = {
       let product = this.products[i];
       innerText += `<div class="item">
                 <div class="image">
-                <a href="view.html?id=${product.id}">
                   <img src="${product.image}" alt="${product.name}" />
-                   </a>
                 </div>
-                <div>
+                <div class="details">
                   <div class="name">${product.name}</div>
-                  <div class="price">${product.price}</div>
+                  <div class="price"><span>&#8377</span>${product.price}</div>
                 </div>
                 <div>
+                  <button class="view-btn">
+                    <a href="view.html?id=${product.id}">View</a>
+                  </button>
                   <button class="delete-btn" data-id="${product.id}">Delete</button>
                   <button class="edit-btn">
-                  <a href="edit.html?id=${product.id}">Edit</a>
+                    <a href="edit.html?id=${product.id}">Edit</a>
                   </button>
                 </div>
               </div>`;

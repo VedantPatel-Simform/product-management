@@ -17,7 +17,7 @@ const Prod = Product.getProduct(id);
 
 productName.textContent = Prod.name;
 productImage.src = Prod.image;
-productPrice.textContent = Prod.price;
+productPrice.innerHTML = "<span>&#8377</span>  " + Prod.price;
 productDescription.textContent = Prod.desc;
 editBtn.href = `edit.html?id=${id}`;
 

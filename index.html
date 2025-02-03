@@ -13,40 +13,77 @@
           <h2>Add Product</h2>
           <form id="productForm">
             <!-- product name  -->
-            <label for="productName">Name: </label>
-            <input type="text" name="productName" id="productName" />
+            <div>
+              <div class="left">
+                <div>
+                  <label for="productName">Name: </label>
+                  <input type="text" name="productName" id="productName" />
+                </div>
 
-            <!-- product image  -->
-            <label for="productImage">Image: </label>
-            <input
-              type="file"
-              name="productImage"
-              id="productImage"
-              accept="image/jpeg, image/png"
-            />
+                <!-- product image  -->
+                <div>
+                  <label for="productImage">Image: </label>
+                  <input
+                    type="file"
+                    name="productImage"
+                    id="productImage"
+                    accept="image/jpeg, image/png"
+                  />
+                </div>
+              </div>
 
-            <!-- product price  -->
-            <label for="productPrice">Price: </label>
-            <input type="text" name="productPrice" id="productPrice" />
-
-            <!-- product description  -->
-            <label for="productDescription">Description: </label>
-            <input
-              type="text"
-              name="productDescription"
-              id="productDescription"
-            />
-            <input type="submit" value="Submit" />
+              <!-- product price  -->
+              <div class="right">
+                <div>
+                  <label for="productPrice">Price: </label>
+                  <input type="text" name="productPrice" id="productPrice" />
+                </div>
+                <!-- product description  -->
+                <div>
+                  <label for="productDescription">Description: </label>
+                  <input
+                    type="text"
+                    name="productDescription"
+                    id="productDescription"
+                  />
+                </div>
+              </div>
+            </div>
+            <div><input type="submit" value="Submit" /></div>
           </form>
         </div>
         <div class="lower">
-          <h1>Products List</h1>
-          <div class="list"></div>
+          <h1>
+            Products List <span><button id="clear-all">Clear All</button></span>
+          </h1>
+          <div class="list">
+            <div class="item">
+              <div class="image">
+                <a href="view.html?id=${product.id}">
+                  <img src="${product.image}" alt="${product.name}" />
+                </a>
+              </div>
+              <div>
+                <div class="name">${product.name}</div>
+                <div class="price"><span>&#8377</span>${product.price}</div>
+              </div>
+              <div>
+                <button class="view-btn">
+                  <a href="view.html?id=${product.id}"> View</a>
+                </button>
+                <button class="delete-btn" data-id="${product.id}">
+                  Delete
+                </button>
+                <button class="edit-btn">
+                  <a href="edit.html?id=${product.id}">Edit</a>
+                </button>
+              </div>
+            </div>
+            <!-- // more items -->
+          </div>
         </div>
       </div>
     </div>
-
-    <button id="clear-all">Clear All</button>
 
     <script type="module" src="js/main.js"></script>
   </body>
