@@ -2,12 +2,11 @@ import Product from "./Product.js";
 import { imageToBase64 } from "./utility.js";
 Product.init(document);
 
-//get id from url
+// Get id from the URL
 const url = window.location.href;
 const urlParams = new URLSearchParams(new URL(url).search);
 const id = urlParams.get("id");
 
-// get product from id
 const editProd = Product.getProduct(id);
 
 const productForm = document.getElementById("productForm");
@@ -22,7 +21,14 @@ productPrice.value = editProd.price;
 productDescription.value = editProd.desc;
 previewImage.src = editProd.image;
 
-let base64url;
+// to preview image when image is changed
+productImage.addEventListener("change", async (event) => {
+  const formData = new FormData(productForm);
+  const image = formData.get("productImage");
+  const base64url = image ? await imageToBase64(image) : editProd.image;
+  previewImage.src = base64url;
+});
+
 productForm.onsubmit = async (event) => {
   event.preventDefault();
   const formData = new FormData(productForm);
@@ -31,7 +37,7 @@ productForm.onsubmit = async (event) => {
   const desc = formData.get("productDescription");
   const image = formData.get("productImage");
 
-  base64url = image ? await imageToBase64(image) : editProd.image;
+  const base64url = image ? await imageToBase64(image) : editProd.image;
 
   Product.editProduct(id, "name", name);
   Product.editProduct(id, "price", price);
