@@ -59,7 +59,7 @@ const Product = {
                 </div>
                 <div class="details">
                   <div class="name">${product.name}</div>
-                  <div class="price"><span>&#8377</span> ${product.price}</div>
+                  <div class="price"><span>&#8377</span>${product.price}</div>
                 </div>
                 <div>
                   <button class="view-btn">
