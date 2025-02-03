@@ -50,28 +50,30 @@ const Product = {
   },
 
   displayProduct: function (prod = this.products) {
-    console.log("prod = ", prod);
-    let innerText = "";
-    for (let i = 0; i < prod.length; i++) {
-      let product = prod[i];
-      innerText += `<div class="item">
-                <div class="image">
-                  <img src="${product.image}" alt="${product.name}" />
-                </div>
-                <div class="details">
-                  <div class="name">${product.name}</div>
-                  <div class="price"><span>&#8377</span>${product.price}</div>
-                </div>
-                <div>
-                  <button class="view-btn">
-                    <a href="view.html?id=${product.id}">View</a>
-                  </button>
-                  <button class="delete-btn" data-id="${product.id}">Delete</button>
-                  <button class="edit-btn">
-                    <a href="edit.html?id=${product.id}">Edit</a>
-                  </button>
-                </div>
-              </div>`;
+    let innerText = "<h3>No products found</h3>";
+    if (prod.length != 0) {
+      innerText = "";
+      for (let i = 0; i < prod.length; i++) {
+        let product = prod[i];
+        innerText += `<div class="item">
+                  <div class="image">
+                    <img src="${product.image}" alt="${product.name}" />
+                  </div>
+                  <div class="details">
+                    <div class="name">${product.name}</div>
+                    <div class="price"><span>&#8377</span>${product.price}</div>
+                  </div>
+                  <div>
+                    <button class="view-btn">
+                      <a href="view.html?id=${product.id}">View</a>
+                    </button>
+                    <button class="delete-btn" data-id="${product.id}">Delete</button>
+                    <button class="edit-btn">
+                      <a href="edit.html?id=${product.id}">Edit</a>
+                    </button>
+                  </div>
+                </div>`;
+      }
     }
     const lower = document.getElementsByClassName("list")[0];
     lower.innerHTML = innerText;

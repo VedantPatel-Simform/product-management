@@ -50,3 +50,33 @@ radios.forEach((radio) => {
     }
   });
 });
+
+const searchField = document.getElementById("searchField");
+const searchBtn = document.getElementById("searchBtn");
+let flag = 1;
+searchBtn.onclick = () => {
+  if (searchField.value) {
+    if (flag) {
+      const id = searchField.value;
+      const product = Product.getProduct(id);
+      console.log(product);
+      if (product) {
+        Product.displayProduct([product]);
+      } else {
+        Product.displayProduct([]);
+      }
+      flag = 0;
+      searchBtn.textContent = "Return";
+    } else {
+      flag = 1;
+      Product.displayProduct();
+      searchBtn.textContent = "Search";
+      searchField.value = "";
+    }
+  }
+};
+
+searchField.oninput = () => {
+  flag = 1;
+  searchBtn.textContent = "Search";
+};
