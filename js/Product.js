@@ -88,7 +88,7 @@ const Product = {
   },
 
   sortProductsById: function () {
-    return this.products.sort((a, b) => Number(a.id) - Number(b.id));
+    return this.products.sort((a, b) => a.id.localeCompare(b.id));
   },
 
   sortProductsByName: function () {
