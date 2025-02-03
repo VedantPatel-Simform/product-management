@@ -6,6 +6,7 @@
     <title>Product Management</title>
     <link rel="stylesheet" href="index.css" />
   </head>
+
   <body>
     <div class="main">
       <div class="container">
@@ -54,33 +55,19 @@
         </div>
         <div class="lower">
           <h1>
-            Products List <span><button id="clear-all">Clear All</button></span>
+            Products List
+            <span>
+              <span>Sort By:</span>
+              <input type="radio" id="sort-id" name="sort" value="id" />
+              <label for="sort-id">ID</label>
+              <input type="radio" id="sort-price" name="sort" value="price" />
+              <label for="sort-price">Price</label>
+              <input type="radio" id="sort-name" name="sort" value="name" />
+              <label for="sort-name">Name</label>
+            </span>
+            <span><button id="clear-all">Clear All</button></span>
           </h1>
-          <div class="list">
-            <div class="item">
-              <div class="image">
-                <a href="view.html?id=${product.id}">
-                  <img src="${product.image}" alt="${product.name}" />
-                </a>
-              </div>
-              <div>
-                <div class="name">${product.name}</div>
-                <div class="price"><span>&#8377</span>${product.price}</div>
-              </div>
-              <div>
-                <button class="view-btn">
-                  <a href="view.html?id=${product.id}"> View</a>
-                </button>
-                <button class="delete-btn" data-id="${product.id}">
-                  Delete
-                </button>
-                <button class="edit-btn">
-                  <a href="edit.html?id=${product.id}">Edit</a>
-                </button>
-              </div>
-            </div>
-            <!-- // more items -->
-          </div>
+          <div class="list"></div>
         </div>
       </div>
     </div>

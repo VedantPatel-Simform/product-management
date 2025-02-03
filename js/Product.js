@@ -49,10 +49,11 @@ const Product = {
     return this.products.find((prod) => prod.id == id);
   },
 
-  displayProduct: function () {
+  displayProduct: function (prod = this.products) {
+    console.log("prod = ", prod);
     let innerText = "";
-    for (let i = 0; i < this.products.length; i++) {
-      let product = this.products[i];
+    for (let i = 0; i < prod.length; i++) {
+      let product = prod[i];
       innerText += `<div class="item">
                 <div class="image">
                   <img src="${product.image}" alt="${product.name}" />
@@ -84,6 +85,18 @@ const Product = {
         this.displayProduct();
       });
     });
+  },
+
+  sortProductsById: function () {
+    return this.products.sort((a, b) => Number(a.id) - Number(b.id));
+  },
+
+  sortProductsByName: function () {
+    return this.products.sort((a, b) => a.name.localeCompare(b.name));
+  },
+
+  sortProductsByPrice: function () {
+    return this.products.sort((a, b) => a.price - b.price);
   },
 };
 
