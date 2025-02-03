@@ -21,7 +21,7 @@ const Product = {
 
   removeProduct: function (productId) {
     this.products = this.products.filter((product) => product.id !== productId);
-    this.displayProduct();
+    // this.displayProduct();
     localStorage.setItem("productList", JSON.stringify(this.products));
   },
 
@@ -55,7 +55,9 @@ const Product = {
       let product = this.products[i];
       innerText += `<div class="item">
                 <div class="image">
+                <a href="view.html?id=${product.id}">
                   <img src="${product.image}" alt="${product.name}" />
+                   </a>
                 </div>
                 <div>
                   <div class="name">${product.name}</div>
@@ -78,6 +80,7 @@ const Product = {
       const id = btn.getAttribute("data-id");
       btn.addEventListener("click", (e) => {
         this.removeProduct(id);
+        this.displayProduct();
       });
     });
   },
