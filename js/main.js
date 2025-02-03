@@ -15,15 +15,24 @@ form.onsubmit = async (event) => {
   const productPrice = parseFloat(formData.get("productPrice"));
   const imageBase64 = await imageToBase64(productImage);
 
-  Product.addProduct({
-    id: generateUniqueId(),
-    name: productName,
-    image: imageBase64,
-    desc: productDescription,
-    price: productPrice,
-  });
+  if (
+    !productName ||
+    !productDescription ||
+    !productPrice ||
+    !productImage.name
+  ) {
+    alert("Please input all fields");
+  } else {
+    Product.addProduct({
+      id: generateUniqueId(),
+      name: productName,
+      image: imageBase64,
+      desc: productDescription,
+      price: productPrice,
+    });
 
-  form.reset();
+    form.reset();
+  }
 };
 
 const clearProducts = document.getElementById("clear-all");
